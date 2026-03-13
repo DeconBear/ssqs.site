@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "../components/page-hero";
 import { PageShell } from "../components/page-shell";
 import { ResearchSidebar, type SidebarGroup } from "../components/research-sidebar";
-import { facultyMembers, studentMembers } from "../site-data";
+import { alumniStudents, currentStudents, facultyMembers } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Research Team | SSQS",
@@ -14,7 +14,8 @@ const teamSidebarGroups: SidebarGroup[] = [
     title: "SSQS Team",
     items: [
       { key: "faculty", label: "Faculty Leads", href: "/research-team#faculty" },
-      { key: "students", label: "Student Researchers", href: "/research-team#students" },
+      { key: "current-students", label: "Current Students", href: "/research-team#current-students" },
+      { key: "alumni", label: "Graduated Students", href: "/research-team#alumni" },
     ],
   },
 ];
@@ -79,7 +80,7 @@ export default function ResearchTeamPage() {
               </div>
             </section>
 
-            <section className="content-section side-panel-section" id="students">
+            <section className="content-section side-panel-section" id="current-students">
               <div className="section-heading">
                 <p className="eyebrow">Student Researchers</p>
                 <h2>Current graduate members of the group</h2>
@@ -90,7 +91,7 @@ export default function ResearchTeamPage() {
               </div>
 
               <div className="student-grid">
-                {studentMembers.map((student) => (
+                {currentStudents.map((student) => (
                   <article className="student-card" key={student.email}>
                     {student.portrait ? (
                       <div className="student-photo">
@@ -122,6 +123,60 @@ export default function ResearchTeamPage() {
                   </article>
                 ))}
               </div>
+            </section>
+
+            <section className="content-section side-panel-section" id="alumni">
+              <div className="section-heading">
+                <p className="eyebrow">Alumni</p>
+                <h2>Graduated students</h2>
+                <p className="section-text">
+                  This section is reserved for graduates of SSQS and will expand as alumni profiles, destinations, and
+                  portraits are organized.
+                </p>
+              </div>
+
+              {alumniStudents.length ? (
+                <div className="student-grid">
+                  {alumniStudents.map((student) => (
+                    <article className="student-card" key={student.email}>
+                      {student.portrait ? (
+                        <div className="student-photo">
+                          <img src={student.portrait} alt={student.name} loading="lazy" />
+                        </div>
+                      ) : (
+                        <div
+                          className="student-photo student-photo-placeholder"
+                          aria-label={`${student.name} portrait placeholder`}
+                        >
+                          <span>{getInitials(student.name)}</span>
+                          <small>Photo to be added</small>
+                        </div>
+                      )}
+
+                      <div className="student-card-copy">
+                        <p className="role-label">{student.role}</p>
+                        <h3>{student.name}</h3>
+                        <div className="student-meta">
+                          <p>
+                            <strong>School:</strong> {student.school}
+                          </p>
+                          <p>
+                            <strong>Cohort:</strong> {student.cohort}
+                          </p>
+                        </div>
+                        <p>{student.summary}</p>
+                        <div className="action-row action-row-compact">
+                          <a href={`mailto:${student.email}`}>{student.email}</a>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              ) : (
+                <div className="student-empty-state">
+                  <p>Graduated student profiles will be added here after the alumni records are confirmed.</p>
+                </div>
+              )}
             </section>
           </div>
         </div>

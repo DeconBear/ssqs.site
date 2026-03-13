@@ -605,7 +605,9 @@ export const studentMembers: StudentMember[] = [
   },
 ];
 
-export const currentStudents = studentMembers.map((member) => member.name);
+export const currentStudents: StudentMember[] = studentMembers;
+
+export const alumniStudents: StudentMember[] = [];
 
 export const joinCategories: JoinCategory[] = [
   {

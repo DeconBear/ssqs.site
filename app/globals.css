@@ -606,6 +606,19 @@ img {
   gap: 18px;
 }
 
+.student-empty-state {
+  padding: 22px 24px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fbfdff 0%, #f3f7fb 100%);
+}
+
+.student-empty-state p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
 .student-card {
   display: grid;
   grid-template-columns: 132px minmax(0, 1fr);
@@ -733,6 +746,19 @@ img {
   padding-top: 6px;
 }
 
+.faculty-card-copy .action-row a[href^="mailto:"],
+.student-card-copy .action-row a[href^="mailto:"] {
+  justify-content: flex-start;
+  max-width: 100%;
+  padding: 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .focus-list,
 .chip-wrap {
   display: flex;
@@ -811,7 +837,7 @@ img {
 
 .publication-card {
   display: grid;
-  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  grid-template-columns: minmax(320px, 0.4fr) minmax(0, 0.6fr);
   overflow: hidden;
 }
 
@@ -821,14 +847,14 @@ img {
 
 .publication-media {
   position: relative;
-  min-height: 260px;
+  min-height: 308px;
   background: linear-gradient(180deg, #f8fbfd 0%, #edf4f9 100%);
 }
 
 .publication-figure-image {
   object-fit: contain;
   object-position: center center;
-  padding: 18px 20px;
+  padding: 10px 12px;
 }
 
 .publication-copy {

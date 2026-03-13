@@ -47,7 +47,7 @@ export default function ResearchPage() {
                           src={paper.image}
                           alt={paper.title}
                           fill
-                          sizes="(max-width: 900px) 100vw, 28vw"
+                          sizes="(max-width: 1100px) 100vw, 36vw"
                           className="publication-figure-image"
                         />
                       </div>
