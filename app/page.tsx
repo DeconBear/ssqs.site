@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "./components/page-shell";
-import { homeCards, homeHighlights, newsItems, publications, siteMeta } from "./site-data";
+import { homeCards, homeHighlights, homeNews, publications, siteMeta } from "./site-data";
 
 export default function HomePage() {
   return (
@@ -41,30 +41,31 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="news-grid">
-            {newsItems.map((item) => (
-              <article className="news-card" key={`${item.date}-${item.title}`}>
-                <div className="news-image">
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 900px) 100vw, 31vw" className="news-cover-image" />
+          <article className="news-card news-card-featured">
+            <div className="news-image">
+              <Image
+                src={homeNews.image}
+                alt={homeNews.title}
+                fill
+                sizes="(max-width: 1100px) 100vw, 42vw"
+                className="news-cover-image"
+              />
+            </div>
+            <div className="news-copy">
+              <p className="publication-meta">
+                {homeNews.category} | {homeNews.date}
+              </p>
+              <h3>{homeNews.title}</h3>
+              <p>{homeNews.summary}</p>
+              {homeNews.href ? (
+                <div className="action-row action-row-compact">
+                  <a href={homeNews.href} target="_blank" rel="noreferrer">
+                    Source
+                  </a>
                 </div>
-                <div className="news-copy">
-                  <p className="publication-meta">
-                    {item.category} | {item.date}
-                  </p>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  <div className="action-row action-row-compact">
-                    {item.href ? (
-                      <a href={item.href} target="_blank" rel="noreferrer">
-                        Source
-                      </a>
-                    ) : null}
-                    <Link href="/research">Research</Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+              ) : null}
+            </div>
+          </article>
         </section>
 
         <section className="card-grid">
