@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "./components/page-shell";
-import { homeCards, homeHighlights, homeNews, publications, siteMeta } from "./site-data";
+import { homeHighlights, homeNews, publications, siteMeta } from "./site-data";
 
 export default function HomePage() {
   return (
@@ -68,16 +68,7 @@ export default function HomePage() {
           </article>
         </section>
 
-        <section className="card-grid">
-          {homeCards.map((item) => (
-            <Link className="entry-card" href={item.href} key={item.href}>
-              <h2>{item.title}</h2>
-              <p>{item.summary}</p>
-            </Link>
-          ))}
-        </section>
-
-        <section className="content-section dual-panel">
+        <section className="content-section dual-panel home-secondary-section">
           <article className="panel">
             <p className="eyebrow">Highlights</p>
             <h2>Recent directions shaping SSQS</h2>
