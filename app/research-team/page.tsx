@@ -116,8 +116,11 @@ export default function ResearchTeamPage() {
                         </p>
                       </div>
                       <p>{student.summary}</p>
-                      <div className="action-row action-row-compact">
-                        <a href={`mailto:${student.email}`}>{student.email}</a>
+                      <div className="student-contact-line">
+                        <strong>Email</strong>
+                        <a href={`mailto:${student.email}`} title={student.email}>
+                          {student.email}
+                        </a>
                       </div>
                     </div>
                   </article>
@@ -165,8 +168,11 @@ export default function ResearchTeamPage() {
                           </p>
                         </div>
                         <p>{student.summary}</p>
-                        <div className="action-row action-row-compact">
-                          <a href={`mailto:${student.email}`}>{student.email}</a>
+                        <div className="student-contact-line">
+                          <strong>Email</strong>
+                          <a href={`mailto:${student.email}`} title={student.email}>
+                            {student.email}
+                          </a>
                         </div>
                       </div>
                     </article>

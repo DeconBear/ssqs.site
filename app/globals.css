@@ -746,6 +746,38 @@ img {
   padding-top: 6px;
 }
 
+.student-contact-line {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.student-contact-line strong {
+  color: var(--blue-800);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.student-contact-line a {
+  min-width: 0;
+  color: var(--blue-900);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.student-contact-line a:hover {
+  color: var(--blue-800);
+}
+
 .faculty-card-copy .action-row a[href^="mailto:"],
 .student-card-copy .action-row a[href^="mailto:"] {
   justify-content: flex-start;
