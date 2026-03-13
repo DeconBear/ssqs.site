@@ -94,7 +94,7 @@ export const navItems: NavItem[] = [
 export const siteMeta = {
   shortName: "SSQS",
   groupName: "Solid-State Quantum Storage Laboratory",
-  institution: "Shenzhen Institute for Quantum Science and Engineering, Southern University of Science and Technology",
+  institution: "Hefei National Laboratory, Shenzhen International Quantum Academy",
   location: "Shenzhen, China",
   headline: "Rare-earth quantum memories for long coherence and network-ready interfaces.",
   summary:
@@ -145,7 +145,7 @@ export const facultyMembers: FacultyMember[] = [
     email: "zhongmanjin@iqasz.cn",
     portrait: "/assets/faculty/manjin-zhong.jpg",
     portraitPosition: "center 18%",
-    office: "College of Science, Institute for Quantum Science and Engineering, Southern University of Science and Technology",
+    office: "Hefei National Laboratory, Shenzhen International Quantum Academy",
     direction:
       "Rare-earth-ion-doped solid-state quantum memory, long-lived coherence, and precision spectroscopy.",
     cardSummary:
@@ -153,7 +153,7 @@ export const facultyMembers: FacultyMember[] = [
     officialHref: "https://faculty.sustech.edu.cn/zhongmj/en/",
     bio: [
       "Manjin Zhong leads SSQS research on rare-earth-ion-doped solid-state quantum memories, long-lived coherence, and precision spectroscopy in solid hosts.",
-      "His academic path connects Xiamen University, the Laser Physics Centre at the Australian National University, and postdoctoral work at ANU before joining SUSTech, giving the group a strong foundation in both fundamental spectroscopy and quantum-memory-oriented experiments.",
+      "His academic path connects Xiamen University, the Laser Physics Centre at the Australian National University, and postdoctoral work at ANU before joining the group in Shenzhen, giving SSQS a strong foundation in both fundamental spectroscopy and quantum-memory-oriented experiments.",
     ],
     education: [
       "B.S., Xiamen University",
@@ -161,7 +161,7 @@ export const facultyMembers: FacultyMember[] = [
       "Ph.D., Laser Physics Centre, Australian National University",
     ],
     experience: [
-      "Associate Researcher, College of Science and Institute for Quantum Science and Engineering, Southern University of Science and Technology",
+      "Associate Researcher, Hefei National Laboratory, Shenzhen International Quantum Academy",
       "Postdoctoral Researcher, Laser Physics Centre, Australian National University",
     ],
     focus: [
@@ -242,7 +242,7 @@ export const facultyMembers: FacultyMember[] = [
       "2007.09-2011.06, B.E., School of Materials Science and Engineering, Wuhan University of Technology",
     ],
     experience: [
-      "2023.02-present, Associate Researcher, Shenzhen International Quantum Academy",
+      "2023.02-present, Associate Researcher, Hefei National Laboratory, Shenzhen International Quantum Academy",
       "2019.08-2023.01, Research Assistant Professor, Southern University of Science and Technology",
       "2017.02-2019.07, Postdoctoral Researcher, CNRS / ENSCP / PSL University",
     ],
@@ -334,7 +334,7 @@ export const facultyMembers: FacultyMember[] = [
       "2007.09-2011.06, B.S., University of Science and Technology of China",
     ],
     experience: [
-      "2025.02-present, Associate Researcher, Shenzhen International Quantum Academy",
+      "2025.02-present, Associate Researcher, Hefei National Laboratory, Shenzhen International Quantum Academy",
       "2018.11-2025.01, Assistant Researcher, Southern University of Science and Technology",
       "2016.10-2018.09, Postdoctoral Researcher, University of Toronto",
     ],
