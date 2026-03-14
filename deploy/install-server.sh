@@ -3,6 +3,34 @@ set -euo pipefail
 
 APP_ROOT="${APP_ROOT:-/var/www/ssqs/current}"
 APP_PARENT="$(dirname "$APP_ROOT")"
+OPENRESTY_CONF_DIR="${OPENRESTY_CONF_DIR:-/opt/1panel/www/conf.d}"
+
+find_openresty_container() {
+  if ! command -v docker >/dev/null 2>&1; then
+    return 1
+  fi
+
+  docker ps --format '{{.Names}}' | grep '^1Panel-openresty' | head -n 1
+}
+
+install_reverse_proxy_config() {
+  local container_name
+
+  if [ -d "$OPENRESTY_CONF_DIR" ] && container_name="$(find_openresty_container)"; then
+    echo "[6/7] Installing OpenResty config..."
+    sudo cp deploy/ssqs.nginx.conf "$OPENRESTY_CONF_DIR/ssqs.conf"
+    docker exec "$container_name" /usr/local/openresty/nginx/sbin/nginx -t
+    docker exec "$container_name" /usr/local/openresty/nginx/sbin/nginx -s reload
+    return 0
+  fi
+
+  echo "[6/7] Installing nginx config..."
+  sudo cp deploy/ssqs.nginx.conf /etc/nginx/sites-available/ssqs
+  sudo ln -sf /etc/nginx/sites-available/ssqs /etc/nginx/sites-enabled/ssqs
+  sudo rm -f /etc/nginx/sites-enabled/default
+  sudo nginx -t
+  sudo systemctl reload nginx
+}
 
 echo "[1/7] Installing system packages..."
 sudo apt update
@@ -50,12 +78,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable ssqs
 sudo systemctl restart ssqs
 
-echo "[6/7] Installing nginx config..."
-sudo cp deploy/ssqs.nginx.conf /etc/nginx/sites-available/ssqs
-sudo ln -sf /etc/nginx/sites-available/ssqs /etc/nginx/sites-enabled/ssqs
-sudo rm -f /etc/nginx/sites-enabled/default
-sudo nginx -t
-sudo systemctl reload nginx
+install_reverse_proxy_config
 
 echo "[7/7] Final checks..."
 sudo systemctl --no-pager --full status ssqs || true

@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+WORK_TREE=/var/www/ssqs/current
+GIT_DIR=/var/www/git/ssqs.git
+
+mkdir -p "$WORK_TREE"
+git --work-tree="$WORK_TREE" --git-dir="$GIT_DIR" checkout -f main
+
+cd "$WORK_TREE"
+chmod +x deploy/update-site.sh
+bash deploy/update-site.sh
