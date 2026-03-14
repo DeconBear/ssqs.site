@@ -4,7 +4,7 @@ release/
 tmp/
 *.log
 tsconfig.tsbuildinfo
-papers/
-paper-images/
-paper-page-shots/
-lab-media/
+/papers/
+/paper-images/
+/paper-page-shots/
+/lab-media/
