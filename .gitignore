@@ -8,3 +8,5 @@ tsconfig.tsbuildinfo
 /paper-images/
 /paper-page-shots/
 /lab-media/
+/public/pdfs/
+*.pdf

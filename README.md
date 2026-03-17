@@ -483,6 +483,23 @@ export const homeNews = {
 
 - `public/assets/papers`
 
+### 不要上传 PDF 到 GitHub
+
+本项目现在默认不再把论文 PDF 存进仓库。
+
+原因：
+
+- 仓库后续可能公开
+- PDF 体积大
+- 版权风险更高
+- 网站当前已经改成只展示论文图片和 `Source` 外链，不再直接提供本地 PDF
+
+所以今后请遵守这个原则：
+
+- 论文图片可以放进 `public/assets/papers`
+- 论文来源链接写进 `app/site-data.ts`
+- 不要把 PDF 放进 `public/pdfs`
+
 ### 一条必须记住的规则
 
 代码里不要写 `public`。
