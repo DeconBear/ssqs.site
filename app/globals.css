@@ -1152,9 +1152,10 @@ img {
 
 .footer-brand h2 {
   color: #fff;
-  max-width: 11ch;
-  font-size: 1.88rem;
+  max-width: none;
+  font-size: clamp(1.44rem, 1.7vw, 1.72rem);
   line-height: 1.14;
+  white-space: nowrap;
 }
 
 .footer-brand p,
@@ -1322,7 +1323,8 @@ img {
   }
 
   .footer-brand h2 {
-    font-size: 1.72rem;
+    font-size: 1.58rem;
+    white-space: normal;
   }
 }
 
