@@ -105,6 +105,8 @@ export const siteMeta = {
   groupName: "Solid-State Quantum Storage Laboratory",
   institution: "International Quantum Academy, and Shenzhen Branch, Hefei National Laboratory, Shenzhen",
   location: "Shenzhen, China",
+  filingNumber: "鄂ICP备2026011934号-1",
+  filingHref: "https://beian.miit.gov.cn/#/Integrated/index",
   headline: "Rare-earth quantum memories for long coherence and network-ready interfaces.",
   summary:
     "We investigate rare-earth-ion-doped materials for quantum memory, coherence spectroscopy, and scalable solid-state interfaces, with a focus on long-lived storage and experimentally grounded routes toward future quantum networks.",
