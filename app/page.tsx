@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "./components/page-shell";
-import { homeHighlights, homeNews, publications, siteMeta } from "./site-data";
+import { homeHighlights, homeIntroduction, homeNews, publications, siteMeta } from "./site-data";
 
 export default function HomePage() {
   return (
@@ -31,6 +31,34 @@ export default function HomePage() {
       </section>
 
       <main className="site-width page-content">
+        <section className="content-section home-intro-section" id="introduction">
+          <div className="home-intro-grid">
+            <article className="panel home-intro-panel">
+              <p className="eyebrow">Introduction</p>
+              <h2>{homeIntroduction.title}</h2>
+              <div className="section-copy-stack">
+                {homeIntroduction.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </article>
+
+            <aside className="panel panel-accent home-notes-panel">
+              <p className="eyebrow">At a Glance</p>
+              <h2>What shapes the work of SSQS</h2>
+              <ul className="plain-list plain-list-compact">
+                {homeIntroduction.notes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <div className="action-row">
+                <Link href="/research">Research</Link>
+                <Link href="/join-us">Join Us</Link>
+              </div>
+            </aside>
+          </div>
+        </section>
+
         <section className="content-section home-news-section" id="news">
           <div className="section-heading">
             <p className="eyebrow">News</p>

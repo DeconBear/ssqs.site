@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "../components/page-hero";
 import { PageShell } from "../components/page-shell";
 import { ResearchSidebar, type SidebarGroup } from "../components/research-sidebar";
-import { alumniStudents, currentStudents, facultyMembers } from "../site-data";
+import { alumniStudents, currentStudents, facultyMembers, siteMeta } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Research Team | SSQS",
@@ -36,7 +36,7 @@ export default function ResearchTeamPage() {
       <PageHero
         eyebrow="Research Team"
         title="Faculty Leads and Student Researchers"
-        summary="The Research Team page presents the faculty responsible for the group and the student researchers growing within SSQS, with dedicated space for portraits, background details, and contact information."
+        summary="The team structure of SSQS combines faculty leads responsible for the laboratory with student researchers developing within the group across quantum memory, spectroscopy, and solid-state experiments."
       />
 
       <main className="site-width page-content">
@@ -49,29 +49,45 @@ export default function ResearchTeamPage() {
                 <p className="eyebrow">Faculty Leads</p>
                 <h2>Faculty responsible for SSQS</h2>
                 <p className="section-text">
-                  Faculty entries lead into detailed profile pages and keep a consistent portrait area with more
-                  controlled sizing and framing.
+                  The faculty section highlights the group leads first, with profile pages available for fuller
+                  biographies, publications, and career background.
                 </p>
               </div>
 
-              <div className="faculty-grid faculty-grid-featured">
+              <div className="faculty-directory">
                 {facultyMembers.map((member) => (
-                  <article className="faculty-card faculty-card-featured" key={member.slug}>
-                    <Link className="faculty-portrait-link" href={`/research-team/${member.slug}`}>
-                      <div className="faculty-portrait">
+                  <article className="faculty-lead-card" key={member.slug}>
+                    <Link className="faculty-lead-photo-link" href={`/research-team/${member.slug}`}>
+                      <div className="faculty-lead-photo">
                         <img src={member.portrait} alt={member.name} loading="lazy" />
                       </div>
                     </Link>
 
-                    <div className="faculty-card-copy">
-                      <p className="role-label">{member.role}</p>
+                    <div className="faculty-lead-copy">
+                      <p className="role-label">Faculty Lead</p>
                       <h3>
                         <Link href={`/research-team/${member.slug}`}>{member.name}</Link>
                       </h3>
+                      <p className="faculty-lead-role">{member.role}</p>
                       <p className="faculty-direction">{member.direction}</p>
+                      <p className="faculty-lead-summary">{member.bio[0]}</p>
+
+                      <div className="faculty-lead-meta">
+                        <p>
+                          <strong>Affiliation</strong>
+                          <span>{member.office ?? siteMeta.institution}</span>
+                        </p>
+                        <p>
+                          <strong>Email</strong>
+                          <a href={`mailto:${member.email}`}>{member.email}</a>
+                        </p>
+                      </div>
+
                       <div className="action-row action-row-compact">
                         <Link href={`/research-team/${member.slug}`}>Profile</Link>
-                        <a href={`mailto:${member.email}`}>{member.email}</a>
+                        <a href={member.officialHref} target="_blank" rel="noreferrer">
+                          Official page
+                        </a>
                       </div>
                     </div>
                   </article>
@@ -84,42 +100,48 @@ export default function ResearchTeamPage() {
                 <p className="eyebrow">Student Researchers</p>
                 <h2>Current graduate members of the group</h2>
                 <p className="section-text">
-                  Each student card keeps room for a future portrait while already showing research role, school, and
-                  email.
+                  Student profiles are kept compact and readable, with a reserved portrait area and key background
+                  information placed directly under each name.
                 </p>
               </div>
 
-              <div className="student-grid">
-                {currentStudents.map((student) => (
-                  <article className="student-card" key={student.email}>
-                    {student.portrait ? (
-                      <div className="student-photo">
-                        <img src={student.portrait} alt={student.name} loading="lazy" />
-                      </div>
-                    ) : (
-                      <div className="student-photo student-photo-placeholder" aria-label={`${student.name} portrait placeholder`}>
-                        <span>{getInitials(student.name)}</span>
-                        <small>Photo to be added</small>
-                      </div>
-                    )}
+              <div className="team-group-block">
+                <div className="team-group-header">
+                  <h3>Current Students</h3>
+                  <p>Graduate researchers and incoming student members currently active in SSQS.</p>
+                </div>
 
-                    <div className="student-card-copy">
-                      <p className="role-label">{student.role}</p>
-                      <h3>{student.name}</h3>
-                      <div className="student-meta">
-                        <p>
-                          <strong>School:</strong> {student.school}
+                <div className="student-directory-grid">
+                  {currentStudents.map((student) => (
+                    <article className="student-directory-card" key={student.email}>
+                      {student.portrait ? (
+                        <div className="student-directory-photo">
+                          <img src={student.portrait} alt={student.name} loading="lazy" />
+                        </div>
+                      ) : (
+                        <div
+                          className="student-directory-photo student-directory-photo-placeholder"
+                          aria-label={`${student.name} portrait placeholder`}
+                        >
+                          <span>{getInitials(student.name)}</span>
+                        </div>
+                      )}
+
+                      <div className="student-directory-copy">
+                        <h3>{student.name}</h3>
+                        <p className="student-directory-role">{student.role}</p>
+                        <p className="student-directory-line">
+                          <strong>School</strong>
+                          <span>{student.school}</span>
+                        </p>
+                        <p className="student-directory-line">
+                          <strong>Email</strong>
+                          <a href={`mailto:${student.email}`}>{student.email}</a>
                         </p>
                       </div>
-                      <div className="student-contact-line">
-                        <strong>Email</strong>
-                        <a href={`mailto:${student.email}`} title={student.email}>
-                          {student.email}
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  ))}
+                </div>
               </div>
             </section>
 
@@ -134,40 +156,43 @@ export default function ResearchTeamPage() {
               </div>
 
               {alumniStudents.length ? (
-                <div className="student-grid">
+                <div className="team-group-block">
+                  <div className="team-group-header">
+                    <h3>Graduated Students</h3>
+                    <p>Alumni destinations and portraits will be added as the records are completed.</p>
+                  </div>
+
+                  <div className="student-directory-grid">
                   {alumniStudents.map((student) => (
-                    <article className="student-card" key={student.email}>
+                    <article className="student-directory-card" key={student.email}>
                       {student.portrait ? (
-                        <div className="student-photo">
+                        <div className="student-directory-photo">
                           <img src={student.portrait} alt={student.name} loading="lazy" />
                         </div>
                       ) : (
                         <div
-                          className="student-photo student-photo-placeholder"
+                          className="student-directory-photo student-directory-photo-placeholder"
                           aria-label={`${student.name} portrait placeholder`}
                         >
                           <span>{getInitials(student.name)}</span>
-                          <small>Photo to be added</small>
                         </div>
                       )}
 
-                      <div className="student-card-copy">
-                        <p className="role-label">{student.role}</p>
+                      <div className="student-directory-copy">
                         <h3>{student.name}</h3>
-                        <div className="student-meta">
-                          <p>
-                            <strong>School:</strong> {student.school}
-                          </p>
-                        </div>
-                        <div className="student-contact-line">
+                        <p className="student-directory-role">{student.role}</p>
+                        <p className="student-directory-line">
+                          <strong>School</strong>
+                          <span>{student.school}</span>
+                        </p>
+                        <p className="student-directory-line">
                           <strong>Email</strong>
-                          <a href={`mailto:${student.email}`} title={student.email}>
-                            {student.email}
-                          </a>
-                        </div>
+                          <a href={`mailto:${student.email}`}>{student.email}</a>
+                        </p>
                       </div>
                     </article>
                   ))}
+                  </div>
                 </div>
               ) : (
                 <div className="student-empty-state">

@@ -24,6 +24,12 @@ export type NewsItem = {
   href?: string;
 };
 
+export type IntroductionBlock = {
+  title: string;
+  paragraphs: string[];
+  notes: string[];
+};
+
 export type FacultyPublication = {
   title: string;
   citation: string;
@@ -81,6 +87,20 @@ export type StudentMember = {
 export type JoinCategory = {
   title: string;
   details: string;
+};
+
+export type JoinGuide = {
+  title: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  notes: string[];
+};
+
+export type ContactDetail = {
+  label: string;
+  value: string;
+  href?: string;
 };
 
 export type ResearchPlatform = {
@@ -152,6 +172,20 @@ export const homeNews: NewsItem = {
   summary:
     "This space is reserved for new publications, awards, graduations, conference participation, hosted meetings, engineering progress, and other important milestones from the laboratory.",
   image: "/assets/lab/cryogenic-optics-lab.png",
+};
+
+export const homeIntroduction: IntroductionBlock = {
+  title: "Experimental quantum storage in rare-earth solid-state systems",
+  paragraphs: [
+    "SSQS studies rare-earth-ion-doped materials for quantum memory, long-lived coherence, and experimentally realistic routes toward future quantum networks. Our work connects solid-state spectroscopy, materials engineering, and memory-oriented device design.",
+    "The laboratory is particularly interested in systems where coherence, materials quality, and interface compatibility matter at the same time. This makes the group a natural meeting point for students, researchers, and collaborators working across optics, quantum information, and solid-state platforms.",
+  ],
+  notes: [
+    "Long-coherence rare-earth quantum memories",
+    "Host screening and coherence spectroscopy",
+    "Crystals, ceramics, and scalable solid-state platforms",
+    "Telecom-compatible quantum-network interfaces",
+  ],
 };
 
 export const facultyMembers: FacultyMember[] = [
@@ -639,5 +673,46 @@ export const joinCategories: JoinCategory[] = [
     title: "How to apply",
     details:
       "Please prepare a CV, a brief statement of research interests, and supporting material such as transcripts or publications. Initial contact can be made by email to the relevant faculty member.",
+  },
+];
+
+export const joinOpening: IntroductionBlock = {
+  title: "We welcome students, engineers, postdocs, and collaborators who enjoy careful experimental work.",
+  paragraphs: [
+    "SSQS is building a laboratory environment centered on quantum memory, coherence spectroscopy, and rare-earth-based solid-state systems. We value people who are curious about difficult experiments, patient with instrumentation, and motivated by long-horizon scientific problems.",
+    "You do not need to arrive with exactly the same background. Strong applicants may come from quantum information, optics, materials, spectroscopy, cryogenic experiments, control electronics, automation, or scientific programming, as long as they are excited to grow into the problems the group is tackling.",
+  ],
+  notes: [
+    "Send a CV and a short statement of research interests.",
+    "Include transcripts, publications, or project summaries when available.",
+    "Email one of the faculty leads for an initial conversation.",
+  ],
+};
+
+export const joinGuide: JoinGuide = {
+  title: "Initial contact and laboratory communication",
+  summary:
+    "If you are interested in joining SSQS, the best first step is a short email introducing your background, current interests, and the kind of role you are seeking. We can then continue the conversation and arrange a more detailed discussion.",
+  image: "/assets/lab/crystal-growth-lab.png",
+  imageAlt: "Laboratory environment at SSQS",
+  notes: [
+    "Briefly introduce your background and current stage of study or work.",
+    "Mention whether you are applying as a student, engineer, postdoc, or collaborator.",
+    "Attach supporting material when possible so we can respond more efficiently.",
+  ],
+};
+
+export const joinContactDetails: ContactDetail[] = [
+  {
+    label: "Affiliation",
+    value: "Shenzhen International Quantum Academy and Shenzhen Branch, Hefei National Laboratory",
+  },
+  {
+    label: "Location",
+    value: "Shenzhen, China",
+  },
+  {
+    label: "Research",
+    value: "Rare-earth quantum memories, coherence spectroscopy, solid-state quantum interfaces",
   },
 ];
