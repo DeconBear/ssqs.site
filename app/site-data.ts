@@ -551,58 +551,67 @@ export const researchPlatforms: ResearchPlatform[] = [
 
 export const studentMembers: StudentMember[] = [
   {
-    name: "Weiye Sun",
-    email: "12331503@mail.sustech.edu.cn",
-    role: "Graduate Researcher",
-    school: "Southern University of Science and Technology",
-  },
-  {
     name: "Miaomiao Ren",
     email: "12231257@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Miaomiao-Ren.jpg",
+  },
+  {
+    name: "Weiye Sun",
+    email: "12331503@mail.sustech.edu.cn",
+    role: "Graduate Researcher",
+    school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Weiye-Sun.jpg",
   },
   {
     name: "Mucheng Guo",
     email: "12331502@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Mucheng-Guo.jpg",
   },
   {
     name: "Zhenqi Xu",
     email: "12333060@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Zhenqi-Xu.jpg",
   },
   {
     name: "Zhehao Xu",
     email: "12333073@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Zhehao-Xu.jpg",
   },
   {
     name: "Xingmin He",
     email: "12531198@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Xingmin-He.jpg",
   },
   {
     name: "Yuxin Zhang",
     email: "12532267@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Yuxin-Zhang.jpg",
   },
   {
     name: "Hanwen Liang",
     email: "12543047@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
+    portrait: "/assets/students/Hanwen-Liang.jpg",
   },
   {
     name: "Yuhui Liu",
     email: "i.love.wind.sunny@gmail.com",
     role: "admitted direct-entry PhD student",
     school: "University of Science and Technology of China",
+    portrait: "/assets/students/Yuhui-Liu.jpg",
   },
 ];
 
