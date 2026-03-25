@@ -59,10 +59,9 @@ jobs:
           [ -n "$PRODUCTION_SSH_PRIVATE_KEY" ] || missing+=("secret PRODUCTION_SSH_PRIVATE_KEY")
 
           if [ "${#missing[@]}" -gt 0 ]; then
-            echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "Missing deployment config:"
             printf ' - %s\n' "${missing[@]}"
-            exit 0
+            exit 1
           fi
 
           if [ -z "$PRODUCTION_SSH_PORT" ]; then
@@ -72,12 +71,6 @@ jobs:
           fi
 
           echo "ready=true" >> "$GITHUB_OUTPUT"
-
-      - name: Skip deploy until Actions secrets are configured
-        if: steps.config.outputs.ready != 'true'
-        run: |
-          echo "Deployment was skipped because the repository secrets or variables are not configured yet."
-          echo "Add PRODUCTION_SSH_PRIVATE_KEY and PRODUCTION_SSH_HOST / PRODUCTION_SSH_USER / PRODUCTION_GIT_PATH, then rerun this workflow."
 
       - name: Checkout repository
         if: steps.config.outputs.ready == 'true'

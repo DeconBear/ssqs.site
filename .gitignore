@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 *.pdf
 /gmail.txt
 /guandance.txt
+/.codex_deploy_key
+/.codex_deploy_key.pub
+/ssqs.site.jpg
