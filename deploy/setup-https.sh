@@ -18,6 +18,21 @@ find_openresty_container() {
   docker ps --format '{{.Names}}' | grep '^1Panel-openresty' | head -n 1
 }
 
+prefer_ipv4() {
+  local rule='precedence ::ffff:0:0/96 100'
+
+  if sudo grep -Eq '^[[:space:]]*precedence[[:space:]]+::ffff:0:0/96[[:space:]]+100' /etc/gai.conf; then
+    return 0
+  fi
+
+  if sudo grep -Eq '^[[:space:]]*#?[[:space:]]*precedence[[:space:]]+::ffff:0:0/96[[:space:]]+100' /etc/gai.conf; then
+    sudo sed -i 's/^[[:space:]]*#\?[[:space:]]*precedence[[:space:]]\+::ffff:0:0\/96[[:space:]]\+100/precedence ::ffff:0:0\/96 100/' /etc/gai.conf
+    return 0
+  fi
+
+  printf '\n%s\n' "$rule" | sudo tee -a /etc/gai.conf > /dev/null
+}
+
 reload_openresty() {
   local container_name
 
@@ -158,6 +173,9 @@ main() {
   else
     echo "[1/6] certbot already installed."
   fi
+
+  echo "[1.5/6] Preferring IPv4 for ACME requests..."
+  prefer_ipv4
 
   echo "[2/6] Preparing ACME challenge webroot..."
   sudo mkdir -p "$WEBROOT/.well-known/acme-challenge"
