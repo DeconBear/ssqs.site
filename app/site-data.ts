@@ -76,7 +76,6 @@ export type StudentMember = {
   role: string;
   school: string;
   cohort: string;
-  summary: string;
   portrait?: string;
   portraitPosition?: string;
 };
@@ -565,7 +564,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "2023 Cohort",
-    summary: "Working on rare-earth quantum memory experiments, coherence measurements, and solid-state spectroscopy.",
   },
   {
     name: "Miaomiao Ren",
@@ -573,7 +571,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "2022 Cohort",
-    summary: "Contributing to optical coherence studies, spectroscopy workflows, and quantum-memory-oriented experiments.",
   },
   {
     name: "Mucheng Guo",
@@ -581,7 +578,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "2023 Cohort",
-    summary: "Focusing on rare-earth coherence physics, memory design questions, and materials-driven experimental studies.",
   },
   {
     name: "Zhenqi Xu",
@@ -589,7 +585,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "2023 Cohort",
-    summary: "Supporting host characterization, spectroscopy measurements, and rare-earth material evaluation.",
   },
   {
     name: "Zhehao Xu",
@@ -597,7 +592,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "Cohort to be updated",
-    summary: "Working on experimental measurements and data analysis related to rare-earth-ion-doped solid-state systems.",
   },
   {
     name: "Xingmin He",
@@ -605,7 +599,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "Cohort to be updated",
-    summary: "Engaged in quantum-memory experiments, laboratory practice, and steadily expanding project ownership.",
   },
   {
     name: "Yuxin Zhang",
@@ -613,7 +606,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "2025 Cohort",
-    summary: "Preparing to contribute to optics, spectroscopy, and quantum-storage-related experimental work in SSQS.",
   },
   {
     name: "Hanwen Liang",
@@ -621,7 +613,6 @@ export const studentMembers: StudentMember[] = [
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
     cohort: "Cohort to be updated",
-    summary: "Developing research skills through rare-earth materials work, measurements, and quantitative analysis.",
   },
   {
     name: "Yuhui Liu",
@@ -629,7 +620,6 @@ export const studentMembers: StudentMember[] = [
     role: "admitted direct-entry PhD student",
     school: "University of Science and Technology of China",
     cohort: "Cohort to be updated",
-    summary: "Focusing on rare-earth coherence physics, memory design questions, and materials-driven experimental studies.",
   },
 ];
 
