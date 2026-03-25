@@ -68,7 +68,6 @@ export default function ResearchTeamPage() {
                       <h3>
                         <Link href={`/research-team/${member.slug}`}>{member.name}</Link>
                       </h3>
-                      <p className="faculty-direction">{member.direction}</p>
                       <div className="action-row action-row-compact">
                         <Link href={`/research-team/${member.slug}`}>Profile</Link>
                         <a href={`mailto:${member.email}`}>{member.email}</a>
