@@ -44,14 +44,14 @@ git push origin main
 - `PRODUCTION_SSH_USER`
 - `PRODUCTION_GIT_PATH`
 
-对于你当前这个网站，通常可以填成：
+对于你当前这个网站，建议填成：
 
-- `PRODUCTION_SSH_HOST = ssqs.site`
+- `PRODUCTION_SSH_HOST = 111.230.186.141`
 - `PRODUCTION_SSH_PORT = 22`
-- `PRODUCTION_SSH_USER = root`
+- `PRODUCTION_SSH_USER = ubuntu`
 - `PRODUCTION_GIT_PATH = /var/www/git/ssqs.git`
 
-如果你以后把部署账号改成 `ubuntu`，这里只需要同步改变量值，不用改 workflow 文件。
+这套值对应的是当前已经配置好的“专用 GitHub Actions 部署 key + ubuntu 部署账号”方案。
 
 ## 如果 workflow 运行后显示 skipped
 
