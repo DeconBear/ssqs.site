@@ -1,0 +1,104 @@
+name: Deploy SSQS Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ssqs-production-deploy
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: build
+    environment: production
+    env:
+      PRODUCTION_SSH_HOST: ${{ vars.PRODUCTION_SSH_HOST }}
+      PRODUCTION_SSH_PORT: ${{ vars.PRODUCTION_SSH_PORT }}
+      PRODUCTION_SSH_USER: ${{ vars.PRODUCTION_SSH_USER }}
+      PRODUCTION_GIT_PATH: ${{ vars.PRODUCTION_GIT_PATH }}
+      PRODUCTION_SSH_PRIVATE_KEY: ${{ secrets.PRODUCTION_SSH_PRIVATE_KEY }}
+    steps:
+      - name: Check deployment configuration
+        id: config
+        shell: bash
+        run: |
+          missing=()
+
+          [ -n "$PRODUCTION_SSH_HOST" ] || missing+=("variable PRODUCTION_SSH_HOST")
+          [ -n "$PRODUCTION_SSH_USER" ] || missing+=("variable PRODUCTION_SSH_USER")
+          [ -n "$PRODUCTION_GIT_PATH" ] || missing+=("variable PRODUCTION_GIT_PATH")
+          [ -n "$PRODUCTION_SSH_PRIVATE_KEY" ] || missing+=("secret PRODUCTION_SSH_PRIVATE_KEY")
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Missing deployment config:"
+            printf ' - %s\n' "${missing[@]}"
+            exit 0
+          fi
+
+          if [ -z "$PRODUCTION_SSH_PORT" ]; then
+            echo "port=22" >> "$GITHUB_OUTPUT"
+          else
+            echo "port=$PRODUCTION_SSH_PORT" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+      - name: Skip deploy until Actions secrets are configured
+        if: steps.config.outputs.ready != 'true'
+        run: |
+          echo "Deployment was skipped because the repository secrets or variables are not configured yet."
+          echo "Add PRODUCTION_SSH_PRIVATE_KEY and PRODUCTION_SSH_HOST / PRODUCTION_SSH_USER / PRODUCTION_GIT_PATH, then rerun this workflow."
+
+      - name: Checkout repository
+        if: steps.config.outputs.ready == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure SSH
+        if: steps.config.outputs.ready == 'true'
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$PRODUCTION_SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/production
+          chmod 600 ~/.ssh/production
+          ssh-keyscan -p "${{ steps.config.outputs.port }}" -H "$PRODUCTION_SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Push current commit to production bare repository
+        if: steps.config.outputs.ready == 'true'
+        shell: bash
+        run: |
+          remote="ssh://${PRODUCTION_SSH_USER}@${PRODUCTION_SSH_HOST}:${{ steps.config.outputs.port }}${PRODUCTION_GIT_PATH}"
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/production -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -p ${{ steps.config.outputs.port }}" \
+            git push "$remote" HEAD:main
