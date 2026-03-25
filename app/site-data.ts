@@ -623,6 +623,14 @@ export const studentMembers: StudentMember[] = [
     cohort: "Cohort to be updated",
     summary: "Developing research skills through rare-earth materials work, measurements, and quantitative analysis.",
   },
+  {
+    name: "Yuhui Liu",
+    email: "i.love.wind.sunny@gmail.com",
+    role: "admitted direct-entry PhD student",
+    school: "University of Science and Technology of China",
+    cohort: "Cohort to be updated",
+    summary: "Focusing on rare-earth coherence physics, memory design questions, and materials-driven experimental studies.",
+  },
 ];
 
 export const currentStudents: StudentMember[] = studentMembers;
