@@ -74,7 +74,6 @@ export type StudentMember = {
   email: string;
   role: string;
   school: string;
-  cohort: string;
   portrait?: string;
   portraitPosition?: string;
 };
@@ -556,63 +555,54 @@ export const studentMembers: StudentMember[] = [
     email: "12331503@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "2023 Cohort",
   },
   {
     name: "Miaomiao Ren",
     email: "12231257@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "2022 Cohort",
   },
   {
     name: "Mucheng Guo",
     email: "12331502@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "2023 Cohort",
   },
   {
     name: "Zhenqi Xu",
     email: "12333060@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "2023 Cohort",
   },
   {
     name: "Zhehao Xu",
     email: "12333073@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "Cohort to be updated",
   },
   {
     name: "Xingmin He",
     email: "12531198@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "Cohort to be updated",
   },
   {
     name: "Yuxin Zhang",
     email: "12532267@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "2025 Cohort",
   },
   {
     name: "Hanwen Liang",
     email: "12543047@mail.sustech.edu.cn",
     role: "Graduate Researcher",
     school: "Southern University of Science and Technology",
-    cohort: "Cohort to be updated",
   },
   {
     name: "Yuhui Liu",
     email: "i.love.wind.sunny@gmail.com",
     role: "admitted direct-entry PhD student",
     school: "University of Science and Technology of China",
-    cohort: "Cohort to be updated",
   },
 ];
 

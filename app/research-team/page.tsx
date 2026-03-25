@@ -84,8 +84,8 @@ export default function ResearchTeamPage() {
                 <p className="eyebrow">Student Researchers</p>
                 <h2>Current graduate members of the group</h2>
                 <p className="section-text">
-                  Each student card keeps room for a future portrait while already showing research role, school,
-                  cohort, and email.
+                  Each student card keeps room for a future portrait while already showing research role, school, and
+                  email.
                 </p>
               </div>
 
@@ -109,9 +109,6 @@ export default function ResearchTeamPage() {
                       <div className="student-meta">
                         <p>
                           <strong>School:</strong> {student.school}
-                        </p>
-                        <p>
-                          <strong>Cohort:</strong> {student.cohort}
                         </p>
                       </div>
                       <div className="student-contact-line">
@@ -160,9 +157,6 @@ export default function ResearchTeamPage() {
                         <div className="student-meta">
                           <p>
                             <strong>School:</strong> {student.school}
-                          </p>
-                          <p>
-                            <strong>Cohort:</strong> {student.cohort}
                           </p>
                         </div>
                         <div className="student-contact-line">
