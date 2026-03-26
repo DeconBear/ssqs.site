@@ -630,6 +630,11 @@ img {
   gap: 22px;
 }
 
+.team-page-layout .faculty-grid-featured {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
 .faculty-card,
 .theme-card,
 .info-card {
@@ -645,6 +650,12 @@ img {
   overflow: visible;
 }
 
+.team-page-layout .faculty-card-featured {
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+
 .faculty-card-copy {
   display: flex;
   flex-direction: column;
@@ -656,6 +667,10 @@ img {
 .faculty-portrait-link {
   display: block;
   align-self: start;
+}
+
+.team-page-layout .faculty-portrait-link {
+  width: min(100%, 184px);
 }
 
 .faculty-portrait,
@@ -804,6 +819,14 @@ img {
 
 .faculty-card-copy > p {
   margin: 0;
+}
+
+.team-page-layout .faculty-card-copy {
+  gap: 8px;
+}
+
+.team-page-layout .faculty-card-copy .action-row {
+  margin-top: 6px;
 }
 
 .faculty-card-copy h3 a:hover,
@@ -1510,6 +1533,10 @@ img {
     margin-left: 0;
   }
 
+  .team-page-layout .faculty-grid-featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .faculty-profile-portrait-compact {
     max-width: 260px;
     justify-self: start;
@@ -1557,6 +1584,10 @@ img {
   }
 
   .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-page-layout .faculty-grid-featured {
     grid-template-columns: 1fr;
   }
 }

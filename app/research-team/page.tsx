@@ -39,8 +39,8 @@ export default function ResearchTeamPage() {
         summary="The SSQS team brings together full-time researchers and graduate students working on rare-earth materials, quantum memory experiments, coherence spectroscopy, and related quantum technologies."
       />
 
-      <main className="site-width page-content">
-        <div className="sidebar-layout">
+      <main className="site-width page-content research-page-main">
+        <div className="sidebar-layout research-page-layout team-page-layout">
           <ResearchSidebar ariaLabel="Research team sections" groups={teamSidebarGroups} />
 
           <div className="sidebar-content">
