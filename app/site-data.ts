@@ -56,6 +56,9 @@ export type ResearchTheme = {
 
 export type Publication = {
   title: string;
+  authors: string;
+  publishedOn: string;
+  sortDate: string;
   venue: string;
   year: string;
   result: string;
@@ -471,6 +474,10 @@ export const researchThemes: ResearchTheme[] = [
 export const publications: Publication[] = [
   {
     title: "Towards telecom-compatible quantum nodes using erbium-doped stoichiometric EuCl3 hydrate crystals",
+    authors:
+      "Mucheng Guo, Wanting Xiao, Zongfeng Li, Weiye Sun, Matthew J. Sellars, Rose L. Ahlefeldt, Ping Wang, Shuping Liu, Fudong Wang, and Manjin Zhong",
+    publishedOn: "25 Feb 2026",
+    sortDate: "2026-02-25",
     venue: "npj Quantum Information",
     year: "2026",
     result:
@@ -482,6 +489,10 @@ export const publications: Publication[] = [
   },
   {
     title: "Nuclear Spins in a Solid Exceeding 10-Hour Coherence Times for Ultra-Long-Term Quantum Storage",
+    authors:
+      "Fudong Wang, Miaomiao Ren, Weiye Sun, Mucheng Guo, Matthew J. Sellars, Rose L. Ahlefeldt, John G. Bartholomew, Juan Yao, Shuping Liu, and Manjin Zhong",
+    publishedOn: "3 Jan 2025",
+    sortDate: "2025-01-03",
     venue: "PRX Quantum",
     year: "2025",
     result:
@@ -493,6 +504,10 @@ export const publications: Publication[] = [
   },
   {
     title: "Long-lived optical coherence and spin lifetimes in Eu3+:Y2O3 oxide ceramics for quantum memories",
+    authors:
+      "Shuping Liu, Miaomiao Ren, Wanting Xiao, Jun Wang, Yuting Liu, Diana Serrano, Philippe Goldner, Dingyuan Tang, Xiantong An, Fudong Wang, and Manjin Zhong",
+    publishedOn: "18 Aug 2025",
+    sortDate: "2025-08-18",
     venue: "Communications Physics",
     year: "2025",
     result:
@@ -504,6 +519,10 @@ export const publications: Publication[] = [
   },
   {
     title: "Optical coherence and hyperfine structure of the 7F0<->5D0 transition in Eu3+:CaWO4",
+    authors:
+      "Xiantong An, Xin An, Weiye Sun, Zhehao Xu, Wanting Xiao, Miaomiao Ren, Mucheng Guo, Shuping Liu, Fudong Wang, and Manjin Zhong",
+    publishedOn: "1 Jun 2025",
+    sortDate: "2025-06-01",
     venue: "Journal of Luminescence",
     year: "2025",
     result:
@@ -515,6 +534,9 @@ export const publications: Publication[] = [
   },
   {
     title: "Rare-earth quantum memories: The experimental status quo",
+    authors: "Mucheng Guo, Shuping Liu, Weiye Sun, Miaomiao Ren, Fudong Wang, and Manjin Zhong",
+    publishedOn: "16 Jan 2023",
+    sortDate: "2023-01-16",
     venue: "Frontiers of Physics",
     year: "2023",
     result:
@@ -526,6 +548,10 @@ export const publications: Publication[] = [
   },
   {
     title: "Quantum coherence and applications of micro and nano rare-earth-doped crystals: recent progress",
+    authors:
+      "Mucheng Guo, Fudong Wang, Zhaogao Hu, Miaomiao Ren, Weiye Sun, Wanting Xiao, Shuping Liu, and Manjin Zhong",
+    publishedOn: "20 Jun 2023",
+    sortDate: "2023-06-20",
     venue: "Acta Physica Sinica",
     year: "2023",
     result:

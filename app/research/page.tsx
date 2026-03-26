@@ -15,6 +15,10 @@ const researchSidebarGroups: SidebarGroup[] = [
 ];
 
 export default function ResearchPage() {
+  const chronologicalPublications = [...publications].sort((left, right) =>
+    right.sortDate.localeCompare(left.sortDate),
+  );
+
   return (
     <PageShell>
       <PageHero
@@ -31,47 +35,26 @@ export default function ResearchPage() {
             <section className="content-section side-panel-section" id="publications">
               <div className="section-heading">
                 <p className="eyebrow">Achievements</p>
-                <h2>Recent papers and what each one contributed</h2>
-                <p className="section-text">
-                  Each entry keeps the emphasis on the scientific result and links out to the journal or source page
-                  rather than directly to a local PDF.
-                </p>
+                <h2>Selected papers in reverse chronological order</h2>
+                <p className="section-text">Listed by title, authors, and publication date.</p>
               </div>
 
-              <div className="publication-stack">
-                {publications.map((paper) => (
-                  <article className={`publication-card${paper.image ? "" : " text-only"}`} key={paper.title}>
-                    {paper.image ? (
-                      <div className="publication-media">
-                        <Image
-                          src={paper.image}
-                          alt={paper.title}
-                          fill
-                          sizes="(max-width: 1100px) 100vw, 42vw"
-                          className="publication-figure-image"
-                        />
-                      </div>
-                    ) : null}
-
-                    <div className="publication-copy">
-                      <p className="publication-meta">
-                        {paper.venue} | {paper.year}
-                      </p>
-                      <h3>{paper.title}</h3>
-                      <p>
-                        <strong>Result:</strong> {paper.result}
-                      </p>
-                      <p>
-                        <strong>Why it matters:</strong> {paper.significance}
-                      </p>
-                      {paper.sourceHref ? (
-                        <div className="action-row action-row-compact">
-                          <a href={paper.sourceHref} target="_blank" rel="noreferrer">
-                            Source
-                          </a>
-                        </div>
-                      ) : null}
+              <div className="publication-timeline">
+                {chronologicalPublications.map((paper) => (
+                  <article className="publication-timeline-item" key={paper.title}>
+                    <div className="publication-timeline-head">
+                      <p className="publication-date-label">{paper.publishedOn}</p>
                     </div>
+                    <h3>
+                      {paper.sourceHref ? (
+                        <a href={paper.sourceHref} target="_blank" rel="noreferrer">
+                          {paper.title}
+                        </a>
+                      ) : (
+                        paper.title
+                      )}
+                    </h3>
+                    <p className="publication-author-line">{paper.authors}</p>
                   </article>
                 ))}
               </div>
