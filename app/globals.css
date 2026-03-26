@@ -825,10 +825,6 @@ img {
   gap: 8px;
 }
 
-.team-page-layout .faculty-card-copy .action-row {
-  margin-top: 6px;
-}
-
 .faculty-card-copy h3 a:hover,
 .profile-breadcrumbs a:hover,
 .link-stack a:hover {
@@ -847,6 +843,38 @@ img {
 .faculty-card-copy .action-row {
   margin-top: auto;
   padding-top: 6px;
+}
+
+.faculty-contact-line {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(217, 227, 237, 0.8);
+}
+
+.faculty-contact-line strong {
+  color: rgba(20, 91, 151, 0.78);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.faculty-contact-line a {
+  min-width: 0;
+  color: var(--blue-900);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.faculty-contact-line a:hover {
+  color: var(--blue-800);
 }
 
 .student-card-copy .action-row {
