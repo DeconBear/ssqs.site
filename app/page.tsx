@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NewsCarousel } from "./components/news-carousel";
 import { PageShell } from "./components/page-shell";
 import { homeNews, researchThemes, siteMeta } from "./site-data";
 
@@ -34,36 +35,13 @@ export default function HomePage() {
         <section className="content-section home-news-section" id="news">
           <div className="section-heading">
             <p className="eyebrow">News</p>
-            <h2>Recent updates from SSQS</h2>
-            <p className="section-text">
-              This section is reserved for publication announcements, honors, group milestones, conference activity,
-              graduating students, and other updates from the laboratory.
-            </p>
+            <h2>News</h2>
+            <p className="section-text">These photos show our current team members.</p>
           </div>
 
-          <article className="news-card news-card-featured">
-            <div className="news-image">
-              <Image
-                src={homeNews.image}
-                alt={homeNews.title}
-                fill
-                sizes="(max-width: 1100px) 100vw, 42vw"
-                className="news-cover-image"
-              />
-            </div>
-            <div className="news-copy">
-              <p className="publication-meta">
-                {homeNews.category} | {homeNews.date}
-              </p>
-              <h3>{homeNews.title}</h3>
-              <p>{homeNews.summary}</p>
-              {homeNews.href ? (
-                <div className="action-row action-row-compact">
-                  <a href={homeNews.href} target="_blank" rel="noreferrer">
-                    Source
-                  </a>
-                </div>
-              ) : null}
+          <article className="news-card news-card-featured news-card-carousel-only">
+            <div className="news-image news-image-carousel">
+              <NewsCarousel images={homeNews.images} label={homeNews.title} />
             </div>
           </article>
         </section>

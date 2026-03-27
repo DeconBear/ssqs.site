@@ -59,12 +59,8 @@ export default function ResearchPage() {
 
           <div className="sidebar-content">
             <section className="content-section side-panel-section" id="publications">
-              <div className="section-heading">
-                <p className="eyebrow">Publications</p>
-                <h2>Selected papers grouped by publication year</h2>
-                <p className="section-text">
-                  Each entry highlights the paper title, authors, journal, and source link.
-                </p>
+              <div className="section-heading research-publications-heading">
+                <h2 className="research-publications-title">Publications</h2>
               </div>
 
               <div className="publication-year-stack">

@@ -20,7 +20,10 @@ export type NewsItem = {
   category: string;
   title: string;
   summary: string;
-  image: string;
+  images: {
+    src: string;
+    alt: string;
+  }[];
   href?: string;
 };
 
@@ -162,11 +165,31 @@ export const homeHighlights: Highlight[] = [
 
 export const homeNews: NewsItem = {
   date: "December 2025",
-  category: "Laboratory",
-  title: "Group portrait of the current SSQS research team",
-  summary:
-    "Members of SSQS gathered in the laboratory for a new group portrait. The image reflects the current research team working on rare-earth solid-state quantum storage, spectroscopy, and experimental platform development, and it will serve as a visual entry point for future laboratory updates on publications, honors, conferences, and student milestones.",
-  image: "/assets/news/group-photo.jpg",
+  category: "Current Team",
+  title: "Current Team Members",
+  summary: "These photos show the current members of our team in the laboratory.",
+  images: [
+    {
+      src: "/assets/news/team-members/team-01.jpg",
+      alt: "Current SSQS team members group photo 1",
+    },
+    {
+      src: "/assets/news/team-members/team-02.jpg",
+      alt: "Current SSQS team members group photo 2",
+    },
+    {
+      src: "/assets/news/team-members/team-03.jpg",
+      alt: "Current SSQS team members group photo 3",
+    },
+    {
+      src: "/assets/news/team-members/team-04.jpg",
+      alt: "Current SSQS team members group photo 4",
+    },
+    {
+      src: "/assets/news/team-members/team-05.jpg",
+      alt: "Current SSQS team members group photo 5",
+    },
+  ],
 };
 
 export const facultyMembers: FacultyMember[] = [
