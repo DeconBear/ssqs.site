@@ -4,21 +4,47 @@ import { PageHero } from "../components/page-hero";
 import { PageShell } from "../components/page-shell";
 import { ResearchSidebar, type SidebarGroup } from "../components/research-sidebar";
 import { keyEquipment, publications, researchPlatforms } from "../site-data";
+import type { Publication } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Research | SSQS",
 };
 
+const chronologicalPublications = [...publications].sort((left, right) =>
+  right.sortDate.localeCompare(left.sortDate),
+);
+
+const publicationGroups = Array.from(
+  chronologicalPublications.reduce((groups, paper) => {
+    const yearPapers = groups.get(paper.year);
+    if (yearPapers) {
+      yearPapers.push(paper);
+    } else {
+      groups.set(paper.year, [paper]);
+    }
+
+    return groups;
+  }, new Map<string, Publication[]>()),
+  ([year, papers]) => ({
+    year,
+    papers,
+    sectionId: `publications-${year}`,
+  }),
+);
+
 const researchSidebarGroups: SidebarGroup[] = [
-  { key: "publications", title: "Achievements", href: "/research#publications" },
+  {
+    title: "Publications",
+    items: publicationGroups.map((group) => ({
+      key: group.sectionId,
+      label: group.year,
+      href: `/research#${group.sectionId}`,
+    })),
+  },
   { key: "platforms", title: "Research Platforms", href: "/research#platforms" },
 ];
 
 export default function ResearchPage() {
-  const chronologicalPublications = [...publications].sort((left, right) =>
-    right.sortDate.localeCompare(left.sortDate),
-  );
-
   return (
     <PageShell>
       <PageHero
@@ -34,28 +60,49 @@ export default function ResearchPage() {
           <div className="sidebar-content">
             <section className="content-section side-panel-section" id="publications">
               <div className="section-heading">
-                <p className="eyebrow">Achievements</p>
-                <h2>Selected papers in reverse chronological order</h2>
-                <p className="section-text">Listed by title, authors, and publication date.</p>
+                <p className="eyebrow">Publications</p>
+                <h2>Selected papers grouped by publication year</h2>
+                <p className="section-text">
+                  Each entry highlights the paper title, authors, journal, and source link.
+                </p>
               </div>
 
-              <div className="publication-timeline">
-                {chronologicalPublications.map((paper) => (
-                  <article className="publication-timeline-item" key={paper.title}>
-                    <div className="publication-timeline-head">
-                      <p className="publication-date-label">{paper.publishedOn}</p>
+              <div className="publication-year-stack">
+                {publicationGroups.map((group) => (
+                  <section className="publication-year-group" id={group.sectionId} key={group.year}>
+                    <div className="publication-year-heading">
+                      <h3>{group.year}</h3>
                     </div>
-                    <h3>
-                      {paper.sourceHref ? (
-                        <a href={paper.sourceHref} target="_blank" rel="noreferrer">
-                          {paper.title}
-                        </a>
-                      ) : (
-                        paper.title
-                      )}
-                    </h3>
-                    <p className="publication-author-line">{paper.authors}</p>
-                  </article>
+
+                    <div className="publication-year-list">
+                      {group.papers.map((paper) => (
+                        <article className="publication-entry" key={paper.title}>
+                          <div className="publication-entry-copy">
+                            <h3>
+                              {paper.sourceHref ? (
+                                <a href={paper.sourceHref} target="_blank" rel="noreferrer">
+                                  {paper.title}
+                                </a>
+                              ) : (
+                                paper.title
+                              )}
+                            </h3>
+                            <p className="publication-author-line">{paper.authors}</p>
+                            <p className="publication-reference-line">
+                              <span className="publication-journal-name">{paper.venue}</span>
+                              <span>{`Published ${paper.publishedOn}`}</span>
+                            </p>
+                          </div>
+
+                          {paper.sourceHref ? (
+                            <a className="publication-source-link" href={paper.sourceHref} target="_blank" rel="noreferrer">
+                              View Paper
+                            </a>
+                          ) : null}
+                        </article>
+                      ))}
+                    </div>
+                  </section>
                 ))}
               </div>
             </section>
